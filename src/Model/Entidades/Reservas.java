@@ -42,9 +42,18 @@ public class Reservas {
 		return TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS);
 	}
 	
-	public void atualizaReserva(Date dataEntrada, Date dataSaida) {
+	public String atualizaReserva (Date dataEntrada, Date dataSaida) {
+		
+		Date hoje = new Date();
+		if (dataEntrada.before(hoje) || dataSaida.before(hoje)) {
+			return "Erro na reserva: Datas para reserva devem ser datas futuras!";
+		} 
+		if (! dataSaida.after(dataEntrada)) {
+			return "Erro na reserva: Data de saída deve ser posterior a data de entrada!";
+		} 
 		this.dataEntrada = dataEntrada;
-		this.dataSaida = dataSaida;	
+		this.dataSaida = dataSaida;
+		return null;	
 	}
 	
 	@Override

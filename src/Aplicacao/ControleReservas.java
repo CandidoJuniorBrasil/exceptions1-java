@@ -33,14 +33,11 @@ public class ControleReservas {
 			System.out.print("Data de Saída (dd/mm/yyyy): ");
 			dataSaida = datado.parse(scn.next());
 			
-			Date hoje = new Date();
-			if (dataEntrada.before(hoje) || dataSaida.before(hoje)) {
-				System.out.println("Erro na reserva: Datas para reserva devem ser datas futuras!" );
-			} else if (! dataSaida.after(dataEntrada)) {
-				System.out.println("Erro na reserva: Data de saída deve ser posterior a data de entrada!" );
+			String erro = reserva.atualizaReserva(dataEntrada, dataSaida);
+			if (erro != null) {
+			    System.out.println(erro);
 			} else {
-			    reserva.atualizaReserva(dataEntrada, dataSaida);
-			    System.out.println(reserva);
+				System.out.println(reserva);
 			}
 		}		
 		scn.close();
