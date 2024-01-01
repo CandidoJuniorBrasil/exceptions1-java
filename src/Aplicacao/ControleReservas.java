@@ -32,7 +32,6 @@ public class ControleReservas {
 			dataEntrada = datado.parse(scn.next());
 			System.out.print("Data de Saída (dd/mm/yyyy): ");
 			dataSaida = datado.parse(scn.next());
-			
 		    reserva.atualizaReserva(dataEntrada, dataSaida);
 			System.out.println(reserva);
 		} catch (ParseException e) {
